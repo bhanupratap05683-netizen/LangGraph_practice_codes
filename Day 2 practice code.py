@@ -1,27 +1,27 @@
 from langchain_ollama import OllamaEmbeddings
 
-# 1. Initialize the embedding model
+# 1. Initialize with a dedicated embedding model
 embeddings = OllamaEmbeddings(
-    model="qwen2.5-coder:7b",
-    base_url="http://localhost:11434"  # Default Ollama local endpoint
+    model="nomic-embed-text",
+    base_url="http://localhost:11434"
 )
 
-# 2. Generate an embedding for a single query/string
-single_text = "Write a Python function to compute the Fibonacci sequence."
-single_vector = embeddings.embed_query(single_text)
+# 2. Embed a single query
+query_text = "How do I implement quicksort in Python?"
+query_vector = embeddings.embed_query(query_text)
 
-print(f"Single vector dimensions: {len(single_vector)}")
-print(f"First 5 values: {single_vector[:5]}\n")
+print(f"Query Vector Dimensions: {len(query_vector)}")
+print(f"Sample values: {query_vector[:5]}\n")
 
-# 3. Generate embeddings for a batch of documents
+# 3. Embed a list of documents/code snippets
 documents = [
+    "def quicksort(arr): return arr if len(arr) <= 1 else quicksort([x for x in arr[1:] if x < arr[0]]) + [arr[0]] + quicksort([x for x in arr[1:] if x >= arr[0]])",
     "def bubble_sort(arr): ...",
-    "def quick_sort(arr): ...",
-    "SELECT * FROM users WHERE active = 1;",
-    "CSS Grid vs Flexbox layout comparison."
+    "SELECT * FROM users WHERE status = 'active';",
+    "const fetchData = async () => await fetch('/api/data');"
 ]
 
 doc_vectors = embeddings.embed_documents(documents)
 
-print(f"Generated {len(doc_vectors)} document embeddings.")
+print(f"Total documents embedded: {len(doc_vectors)}")
 print(f"Document 1 vector dimensions: {len(doc_vectors[0])}")
