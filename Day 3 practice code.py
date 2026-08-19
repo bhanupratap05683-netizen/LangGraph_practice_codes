@@ -12,6 +12,7 @@ while True:
     prompt = input("You: ")
     messages.append({"role": "user", "content": prompt})
     if prompt.lower() in ["exit", "quit"]:
+        print(messages)
         print("Chalo bhaag jao! Bye!")
         break
     response = model.invoke(messages)
