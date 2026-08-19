@@ -3,7 +3,8 @@ from langchain_ollama import OllamaEmbeddings
 # 1. Initialize with a dedicated embedding model
 embeddings = OllamaEmbeddings(
     model="nomic-embed-text",
-    base_url="http://localhost:11434"
+    base_url="http://localhost:11434",
+    dimensions=64
 )
 
 # 2. Embed a single query
@@ -11,7 +12,7 @@ query_text = "How do I implement quicksort in Python?"
 query_vector = embeddings.embed_query(query_text)
 
 print(f"Query Vector Dimensions: {len(query_vector)}")
-print(f"Sample values: {query_vector[:5]}\n")
+print(f"Sample values: {query_vector}\n")
 
 # 3. Embed a list of documents/code snippets
 documents = [
