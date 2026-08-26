@@ -33,7 +33,7 @@ mode_prompts = {
 
 # --- Sidebar UI ---
 with st.sidebar:
-    st.title("🧠 Gyani AI")
+    st.title("🧠 Gyani baba Ai")
     st.markdown("### Aapka swagat hai!")
     st.markdown("Choose the mood of your AI:")
     
