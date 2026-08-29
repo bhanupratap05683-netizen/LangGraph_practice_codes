@@ -4,4 +4,4 @@
 - Day 3 practice code.py = build a chatbot with the help of langchain. , and made a UI for it to look interactive.
 - UI.py = UI for day 3 practice code
 - UI.py2 = upgraded UI for day 3 practice code plus add different modes for chat.
-- Day 4 practice code = 
+- Day 4 practice code = PDF loader and make a summary on the given docs.
