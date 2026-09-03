@@ -8,3 +8,4 @@
 - Day 4 practice code.py = PDF loader and make a summary on the given docs.
 - Day 5 practice code.py = Website scraper and write a summary on that webstie.
 - GRU.pdf = pdf file for day 4 work.
+- Aman Sharma aman.pdf = demo pdf file to practice day 8 pracctice code.
