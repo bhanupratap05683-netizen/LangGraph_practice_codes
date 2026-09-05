@@ -11,3 +11,4 @@
 - Aman Sharma aman.pdf = demo pdf file to practice day 8 pracctice code.
 - UI3.py = resume scraper ui part of day 8.
 - UI4.py = Updated version of resume version now also prase PDFs.
+- UI5.py = UI for day 10 job discitption to pdf praser.
