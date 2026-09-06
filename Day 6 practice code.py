@@ -127,3 +127,32 @@ if __name__ == "__main__":
 
     data = parse_resume_local(sample_resume)
     print(data.model_dump_json(indent=2))
+
+    import sys
+
+
+def get_resume_from_terminal() -> str:
+    print("=" * 60)
+    print("PASTE THE RESUME TEXT BELOW.")
+    print("When finished:")
+    print("  - On Windows: Press ENTER, then Ctrl + Z, then ENTER")
+    print("  - On Mac/Linux: Press ENTER, then Ctrl + D")
+    print("=" * 60)
+
+    # Reads all input until an End-Of-File (EOF) marker is sent
+    raw_text = sys.stdin.read()
+    return raw_text.strip()
+
+
+if __name__ == "__main__":
+    resume_input = get_resume_from_terminal()
+
+    if not resume_input:
+        print("No text detected. Exiting.")
+        sys.exit()
+
+    print("\nProcessing with local Qwen 2.5-Coder...")
+    parsed_result = parse_resume_local(resume_input)
+
+    print("\n--- EXTRACTED JSON ---")
+    print(parsed_result.model_dump_json(indent=2))
