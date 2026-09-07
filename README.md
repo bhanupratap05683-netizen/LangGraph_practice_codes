@@ -12,4 +12,5 @@
 - UI3.py = resume scraper ui part of day 8.
 - UI4.py = Updated version of resume version now also prase PDFs.
 - UI5.py = resume praser.
-- Day 6 practice code.py = jason output praser
+- Day 6 practice code.py = jason output praser.
+- Day 7 practice code.py = upgrade the day 6 code and increase the efficeincy
