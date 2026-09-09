@@ -9,4 +9,4 @@
 - Day 5 practice code.py = Website scraper and write a summary on that webstie.
 - GRU.pdf = pdf file for day 4 work.
 - Aman Sharma aman.pdf = demo pdf file to practice day 8 pracctice code.
-- UI3.py = AI resume praser.
+- UI3.py = AI resume praser which gives JASON output.
