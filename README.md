@@ -4,7 +4,7 @@
 - Day 2 practice code.py = use of embbeding function to make embbedings of a sentence,document.
 - Day 3 practice code.py = build a chatbot with the help of langchain. , and made a UI for it to look interactive.
 - UI.py = UI for day 3 practice code
-- UI.py2 = upgraded UI for day 3 practice code plus add different modes for chat.
+- UI2.py = upgraded UI for day 3 practice code plus add different modes for chat.
 - Day 4 practice code.py = PDF loader and make a summary on the given docs.
 - Day 5 practice code.py = Website scraper and write a summary on that webstie.
 - GRU.pdf = pdf file for day 4 work.
@@ -13,4 +13,5 @@
 - UI4.py = AI resume praser which gives the direct output of the pdfs important info.
 - UI5.py = Resume prasser which prase according to the given job description.
 - UI6.py = uncomplete
-- Day 6 practice code = chatbot which extract the info from give text it's a resume praser chat bot.
+- Day 6 practice code.py = chatbot which extract the info from give text it's a resume praser chat bot.
+- Day 7 practice code.py
