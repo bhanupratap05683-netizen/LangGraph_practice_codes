@@ -12,3 +12,4 @@
 - UI3.py = AI resume praser which gives JASON output.
 - UI4.py = AI resume praser which gives the direct output of the pdfs important info.
 - UI5.py = Resume prasser which prase according to the given job description.
+- UI6.py = uncomplete
