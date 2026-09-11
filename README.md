@@ -15,3 +15,4 @@
 - UI6.py = uncomplete
 - Day 6 practice code.py = chatbot which extract the info from give text it's a resume praser chat bot.
 - Day 7 practice code.py = extract data from resume and gives JASON output.
+- Day 8 practice code.py = locally prase the resume.
