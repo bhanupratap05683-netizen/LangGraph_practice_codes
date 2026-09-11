@@ -14,4 +14,4 @@
 - UI5.py = Resume prasser which prase according to the given job description.
 - UI6.py = uncomplete
 - Day 6 practice code.py = chatbot which extract the info from give text it's a resume praser chat bot.
-- Day 7 practice code.py
+- Day 7 practice code.py = extract data from resume and gives JASON output.
