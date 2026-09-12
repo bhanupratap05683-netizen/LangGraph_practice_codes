@@ -17,3 +17,4 @@
 - Day 7 practice code.py = extract data from resume and gives JASON output.
 - Day 8 practice code.py = locally prase the resume.
 - Day 9 practice code.py = locally prase resume with advance contact info extraction method.
+- Day 10 pratice code.py =S
