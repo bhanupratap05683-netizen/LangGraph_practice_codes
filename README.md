@@ -21,3 +21,4 @@
 - UI.py = UI for day 3 practice code
 - UI2.py = upgraded UI for day 3 practice code plus add different modes for chat.
 - UI3.py = AI resume praser which gives JASON output.
+- UI4.py = AI resume praser which gives the direct output of the pdfs important info.
