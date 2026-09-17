@@ -23,3 +23,5 @@
 - UI6.py = uncomplete
 
 ## PDFs
+- GRU.pdf = pdf file for day 4 work.
+
