@@ -5,7 +5,6 @@
 - Day 3 practice code.py = build a chatbot with the help of langchain. , and made a UI for it to look interactive.
 - Day 4 practice code.py = PDF loader and make a summary on the given docs.
 - Day 5 practice code.py = Website scraper and write a summary on that webstie.
-- Aman Sharma aman.pdf = demo pdf file to practice day 8 pracctice code.
 - Day 6 practice code.py = chatbot which extract the info from give text it's a resume praser chat bot.
 - Day 7 practice code.py = extract data from resume and gives JASON output.
 - Day 8 practice code.py = locally prase the resume.
