@@ -1,5 +1,5 @@
-## LangGraph practice Codes
-# Practice code.py - Files context
+# LangGraph practice Codes
+## Practice code.py - Files context
 - Day 1 practice code.py = using a basic langgraph invoke function to call AI response.
 - Day 2 practice code.py = use of embbeding function to make embbedings of a sentence,document.
 - Day 3 practice code.py = build a chatbot with the help of langchain. , and made a UI for it to look interactive.
@@ -12,7 +12,7 @@
 - Day 10 practice code.py = job description baises resume prasing.
 - Day 11 practice code.py = improved version of every resume praser.
 
-```
+---------------------------------------------------------------------------------------
 
 ## UI.py - Files
 - UI.py = UI for day 3 practice code
