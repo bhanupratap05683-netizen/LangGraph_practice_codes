@@ -12,6 +12,8 @@
 - Day 10 practice code.py = job description baises resume prasing.
 - Day 11 practice code.py = improved version of every resume praser.
 
+```
+
 ## UI.py - Files
 - UI.py = UI for day 3 practice code
 - UI2.py = upgraded UI for day 3 practice code plus add different modes for chat.
@@ -19,6 +21,8 @@
 - UI4.py = AI resume praser which gives the direct output of the pdfs important info.
 - UI5.py = Resume prasser which prase according to the given job description.
 - UI6.py = uncomplete
+
+```
 
 ## PDFs
 - GRU.pdf = pdf file for day 4 work.
