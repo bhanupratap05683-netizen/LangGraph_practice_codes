@@ -1,4 +1,4 @@
-# Learning LangGraph and making project files , here i am practicing langGraph and 
+# Learning LangGraph and making project files , 
 --------------------------------------------------------------------------------------
 ## LangGraph practice Codes
 ## Practice code.py - Files context
