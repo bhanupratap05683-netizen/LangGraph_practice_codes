@@ -81,3 +81,18 @@ class MatchEvaluation(BaseModel):
     reasons_for_match: List[str] = Field(description="List of reasons why the resume matches the job description")
     reasons_for_mismatch: List[str] = Field(description="List of reasons why the resume does not fully match the job description")
     missing_skills: List[str] = Field(description="List of specific skills mentioned in the job description but missing from the resume")
+
+
+def extract_email_fallback(text: str) -> str:
+    match = re.search(r"[\w\.-]+@[\w\.-]+\.\w+", text)
+    return match.group(0) if match else ""
+
+def extract_phone_fallback(text: str) -> str:
+    match = re.search(r"(\+?\d{1,3}[-.\s]?)?(\(?\d{3,5}\)?[-.\s]?)?\d{3,5}[-.\s]?\d{4,5}", text)
+    return match.group(0).strip() if match else ""
+
+def chunk_text(text: str, max_words: int = 3000) -> str:
+    """
+    Text Chunking: Truncates text if it exceeds a reasonable word limit.
+    Prevents context window overflow while retaining the most critical info (usually at the top of resumes).
+    """
