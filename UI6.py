@@ -101,3 +101,10 @@ def chunk_text(text: str, max_words: int = 3000) -> str:
         return text
     else:
         return " ".join(words[:max_words]) + " ... [truncated]"
+
+def extract_text_from_pdf(pdf_path: str) -> str:
+    """Extracts text from a single PDF file using PyMuPDF."""
+    if not HAS_PYMUPDF:
+        raise ImportError("PyMuPDF is required. Install via 'pip install pymupdf'")
+
+    
