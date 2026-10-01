@@ -96,3 +96,8 @@ def chunk_text(text: str, max_words: int = 3000) -> str:
     Text Chunking: Truncates text if it exceeds a reasonable word limit.
     Prevents context window overflow while retaining the most critical info (usually at the top of resumes).
     """
+    words = text.split()
+    if len(words) <= max_words:
+        return text
+    else:
+        return " ".join(words[:max_words]) + " ... [truncated]"
