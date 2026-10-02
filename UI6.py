@@ -107,4 +107,11 @@ def extract_text_from_pdf(pdf_path: str) -> str:
     if not HAS_PYMUPDF:
         raise ImportError("PyMuPDF is required. Install via 'pip install pymupdf'")
 
-    
+      text = ""
+        try:
+            with fitz.open(pdf_path) as doc:
+                for page in doc:
+                    text += page.get_text()
+        except Exception as e:
+            logging.error(f"Error reading PDF {pdf_path}: {e}")
+        return text
