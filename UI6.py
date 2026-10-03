@@ -158,3 +158,11 @@ async def parse_resume_local_async(raw_text: str, model_name: str = MODEL_NAME) 
         )
     
         result = ResumeData.model_validate_json(response.message.content)        
+
+    if not result.email:
+           result.email = extract_email_fallback(raw_text)
+       if not result.phone:
+           result.phone = extract_phone_fallback(raw_text)
+   
+       result.last_3_job_titles = result.last_3_job_titles[:3]
+       return result 
