@@ -166,3 +166,9 @@ async def parse_resume_local_async(raw_text: str, model_name: str = MODEL_NAME) 
    
        result.last_3_job_titles = result.last_3_job_titles[:3]
        return result 
+async def match_resume_to_job_async(
+    resume_data: ResumeData, 
+    empty_details: List[str],
+    job_description: str, 
+    model_name: str = MODEL_NAME
+) -> MatchEvaluation:
