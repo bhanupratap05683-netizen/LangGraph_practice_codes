@@ -180,3 +180,16 @@ async def match_resume_to_job_async(
             "- REASONS FOR MISMATCH: Highlight areas where the candidate falls short.\n"
             "- MISSING SKILLS: List specific technical skills, tools, or qualifications explicitly mentioned in the job description but absent."
         )
+    resume_json = resume_data.model_dump_json(indent=2)
+        empty_details_str = ", ".join(empty_details) if empty_details else "None"
+    
+        response = await asyncio.to_thread(
+            ollama.chat,
+            model=model_name,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": f"Resume Data:\n{resume_json}\n\nEmpty/Missing Resume Details:\n{empty_details_str}\n\nJob Description:\n{job_description}"},
+            ],
+            format=MatchEvaluation.model_json_schema(),
+            options={"temperature": 0.0, "num_ctx": 4096},
+        )
