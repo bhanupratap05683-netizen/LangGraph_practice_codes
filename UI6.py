@@ -200,3 +200,11 @@ async def process_single_resume(pdf_path: str, semaphore: asyncio.Semaphore) -> 
     async with semaphore:
         file_name = os.path.basename(pdf_path)
         try:
+            raw_text = extract_text_from_pdf(pdf_path)
+                        
+                        if not raw_text.strip():
+                            raise ValueError("No text could be extracted from the PDF.")
+                        
+                        # Apply text chunking/truncation for safety
+                        safe_text = chunk_text(raw_text, max_words=3000)
+                        
