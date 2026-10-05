@@ -193,3 +193,5 @@ async def match_resume_to_job_async(
             format=MatchEvaluation.model_json_schema(),
             options={"temperature": 0.0, "num_ctx": 4096},
         )
+
+        return MatchEvaluation.model_validate_json(response.message.content)
