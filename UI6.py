@@ -195,3 +195,8 @@ async def match_resume_to_job_async(
         )
 
         return MatchEvaluation.model_validate_json(response.message.content)
+async def process_single_resume(pdf_path: str, semaphore: asyncio.Semaphore) -> dict:
+    """Processes a single resume with concurrency control."""
+    async with semaphore:
+        file_name = os.path.basename(pdf_path)
+        try:
