@@ -207,4 +207,26 @@ async def process_single_resume(pdf_path: str, semaphore: asyncio.Semaphore) -> 
                         
                         # Apply text chunking/truncation for safety
                         safe_text = chunk_text(raw_text, max_words=3000)
+         # 1. Parse Resume
+                    data = await parse_resume_local_async(safe_text)
+                    
+                    # 2. Identify missing details
+                    empty_details = get_empty_or_missing_details(data)
+                    
+                    # 3. Evaluate Match
+                    match_eval = await match_resume_to_job_async(data, empty_details, TARGET_JOB_DESCRIPTION)
+                    
+                    return {
+                        "file_name": file_name,
+                        "name": data.name,
+                        "email": data.email,
+                        "phone": data.phone,
+                        "years_of_experience": data.years_of_experience,
+                        "match_score": match_eval.match_score,
+                        "skills": ", ".join(data.skills),
+                        "reasons_for_match": " | ".join(match_eval.reasons_for_match),
+                        "reasons_for_mismatch": " | ".join(match_eval.reasons_for_mismatch),
+                        "missing_skills": ", ".join(match_eval.missing_skills),
+                        "status": "Success"
+                    }    
                         
