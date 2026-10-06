@@ -244,4 +244,10 @@ async def process_single_resume(pdf_path: str, semaphore: asyncio.Semaphore) -> 
                         "missing_skills": "",
                         "status": "Failed"
                     }  
-                        
+
+
+    def chunk_list(lst: list, chunk_size: int):
+    """Yield successive chunk_size-sized chunks from lst (Batch Chunking)."""
+    for i in range(0, len(lst), chunk_size):
+        yield lst[i:i + chunk_size]
+                    
