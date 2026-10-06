@@ -228,5 +228,20 @@ async def process_single_resume(pdf_path: str, semaphore: asyncio.Semaphore) -> 
                         "reasons_for_mismatch": " | ".join(match_eval.reasons_for_mismatch),
                         "missing_skills": ", ".join(match_eval.missing_skills),
                         "status": "Success"
-                    }    
+                    }  
+          except Exception as e:
+                    logging.error(f"Failed to process {file_name}: {e}")
+                    return {
+                        "file_name": file_name,
+                        "name": "Error",
+                        "email": "",
+                        "phone": "",
+                        "years_of_experience": 0,
+                        "match_score": 0,
+                        "skills": "",
+                        "reasons_for_match": "",
+                        "reasons_for_mismatch": str(e),
+                        "missing_skills": "",
+                        "status": "Failed"
+                    }  
                         
