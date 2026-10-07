@@ -250,4 +250,11 @@ async def process_single_resume(pdf_path: str, semaphore: asyncio.Semaphore) -> 
     """Yield successive chunk_size-sized chunks from lst (Batch Chunking)."""
     for i in range(0, len(lst), chunk_size):
         yield lst[i:i + chunk_size]
+
+async def main_async():
+    # 1. Validate Input Folder
+    if not os.path.isdir(INPUT_FOLDER):
+        os.makedirs(INPUT_FOLDER, exist_ok=True)
+        logging.error(f"Input folder '{INPUT_FOLDER}' was missing. It has been created. Please add PDF resumes and run again.")
+        return
                     
