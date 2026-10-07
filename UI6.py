@@ -263,3 +263,9 @@ async def main_async():
            if not pdf_files:
                logging.warning(f"No PDF files found in '{INPUT_FOLDER}'.")
                return                  
+
+    logging.info(f"✅ Found {len(pdf_files)} PDF resumes. Starting batch processing...")
+    
+        # 3. Setup Concurrency Control
+        semaphore = asyncio.Semaphore(MAX_CONCURRENT_TASKS)
+        all_results = []    
