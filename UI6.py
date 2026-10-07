@@ -257,4 +257,9 @@ async def main_async():
         os.makedirs(INPUT_FOLDER, exist_ok=True)
         logging.error(f"Input folder '{INPUT_FOLDER}' was missing. It has been created. Please add PDF resumes and run again.")
         return
-                    
+    
+   # 2. Gather all PDF files
+           pdf_files = [str(p) for p in Path(INPUT_FOLDER).rglob("*.pdf")]
+           if not pdf_files:
+               logging.warning(f"No PDF files found in '{INPUT_FOLDER}'.")
+               return                  
