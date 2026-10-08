@@ -275,7 +275,13 @@ async def main_async():
         
         tasks = [process_single_resume(pdf_path, semaphore) for pdf_path in chunk]
         
-
+ # Progress bar for the current chunk
+        if HAS_TQDM:
+            chunk_results = await tqdm_asyncio.gather(*tasks, desc="Processing Resumes")
+        else:
+            chunk_results = await asyncio.gather(*tasks)
+            
+        all_results.extend(chunk_results)
 
 
 
