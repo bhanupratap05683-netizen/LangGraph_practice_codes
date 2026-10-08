@@ -269,3 +269,13 @@ async def main_async():
         # 3. Setup Concurrency Control
         semaphore = asyncio.Semaphore(MAX_CONCURRENT_TASKS)
         all_results = []    
+ # 4. Process in Chunks (Batch Chunking for memory/queue management)
+    for chunk in chunk_list(pdf_files, BATCH_CHUNK_SIZE):
+        logging.info(f"Processing chunk of {len(chunk)} resumes...")
+        
+        tasks = [process_single_resume(pdf_path, semaphore) for pdf_path in chunk]
+        
+
+
+
+
