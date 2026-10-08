@@ -284,4 +284,10 @@ async def main_async():
         all_results.extend(chunk_results)
 
 
+   # 5. Filter, Sort, and Rank
+    # Sort ALL by match_score descending (failed ones will naturally fall to the bottom with score 0)
+    ranked_results = sorted(all_results, key=lambda x: x["match_score"], reverse=True)
 
+    # Add Rank column
+    for idx, res in enumerate(ranked_results, start=1):
+        res["rank"] = idx
