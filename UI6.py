@@ -308,3 +308,13 @@ async def main_async():
         "match_score", "skills", "reasons_for_match", "reasons_for_mismatch", 
         "missing_skills", "status"
     ]
+
+    try:
+            with open(OUTPUT_CSV, mode='w', newline='', encoding='utf-8') as f:
+                writer = csv.DictWriter(f, fieldnames=csv_columns)
+                writer.writeheader()
+                writer.writerows(ranked_results)
+            logging.info(f"✅ Successfully exported all {len(ranked_results)} results to '{OUTPUT_CSV}'")
+        except Exception as e:
+            logging.error(f"Failed to write CSV: {e}")
+    
