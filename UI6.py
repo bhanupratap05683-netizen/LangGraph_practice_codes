@@ -291,3 +291,14 @@ async def main_async():
     # Add Rank column
     for idx, res in enumerate(ranked_results, start=1):
         res["rank"] = idx
+
+# 6. Output Top 10 to Console
+    print("\n" + "="*90)
+    print("🏆 TOP 10 RANKED CANDIDATES 🏆")
+    print("="*90)
+    for res in ranked_results[:10]:
+        if res["status"] == "Success":
+            print(f"Rank #{res['rank']:<2} | Score: {res['match_score']:<3}/100 | Name: {res['name']:<20} | File: {res['file_name']}")
+            print(f"  ↳ Skills: {res['skills']}")
+            print(f"  ↳ Match:  {res['reasons_for_match'][:120]}...")
+            print("-" * 90)
