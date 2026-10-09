@@ -302,3 +302,9 @@ async def main_async():
             print(f"  ↳ Skills: {res['skills']}")
             print(f"  ↳ Match:  {res['reasons_for_match'][:120]}...")
             print("-" * 90)
+# 7. Export Full Results to CSV
+    csv_columns = [
+        "rank", "file_name", "name", "email", "phone", "years_of_experience", 
+        "match_score", "skills", "reasons_for_match", "reasons_for_mismatch", 
+        "missing_skills", "status"
+    ]
