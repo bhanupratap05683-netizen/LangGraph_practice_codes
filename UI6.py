@@ -348,3 +348,10 @@ def extract_phone_fallback(text: str) -> str:
     # Matches international formats: +91 98765 43210, (555) 234-5678, +1-555-234-5678, etc.
     match = re.search(r"(\+?\d{1,3}[-.\s]?)?(\(?\d{3,5}\)?[-.\s]?)?\d{3,5}[-.\s]?\d{4,5}", text)
     return match.group(0).strip() if match else 
+
+    try:
+    import fitz  # PyMuPDF
+    HAS_PYMUPDF = True
+except ImportError:
+    HAS_PYMUPDF = False
+    print("Warning: PyMuPDF not installed. Install with 'pip install pymupdf' to enable PDF handling.")
