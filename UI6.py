@@ -339,3 +339,12 @@ async def main_async():
     last_3_job_titles: List[str] = Field(
         description="List of job titles held by candidate"
     )
+def extract_email_fallback(text: str) -> str:
+    match = re.search(r"[\w\.-]+@[\w\.-]+\.\w+", text)
+    return match.group(0) if match else ""
+
+
+def extract_phone_fallback(text: str) -> str:
+    # Matches international formats: +91 98765 43210, (555) 234-5678, +1-555-234-5678, etc.
+    match = re.search(r"(\+?\d{1,3}[-.\s]?)?(\(?\d{3,5}\)?[-.\s]?)?\d{3,5}[-.\s]?\d{4,5}", text)
+    return match.group(0).strip() if match else 
