@@ -355,3 +355,7 @@ def extract_phone_fallback(text: str) -> str:
 except ImportError:
     HAS_PYMUPDF = False
     print("Warning: PyMuPDF not installed. Install with 'pip install pymupdf' to enable PDF handling.")
+
+
+if __name__ == "__main__":
+    asyncio.run(main_async())
