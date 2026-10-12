@@ -400,3 +400,17 @@ async def parse_resume_local_async(
                     "content": f"Extract all details from this resume text:\n\n{raw_text}",
                 },
             ],
+            format=ResumeData.model_json_schema(),
+                    options={
+                        "temperature": 0.0,
+                        "num_ctx": 4096,
+                    },
+                )
+            
+                result = ResumeData.model_validate_json(response.message.content)
+            
+                # Fallback checks: If the LLM returned empty strings for contact info, fill via regex
+                if not result.email:
+                    result.email = extract_email_fallback(raw_text)
+                if not result.phone:
+                    result.phone = extract_phone_fallback(raw_text)
