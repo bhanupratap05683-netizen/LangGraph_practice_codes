@@ -388,3 +388,15 @@ async def parse_resume_local_async(
         "- YEARS OF EXPERIENCE: Calculate the total career duration across all positions.\n"
         "- LAST 3 JOB TITLES: Extract the recent job designations."
     )
+
+      # Using asyncio.to_thread to make the synchronous ollama.chat call non-blocking
+        response = await asyncio.to_thread(
+            ollama.chat,
+            model=model_name,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {
+                    "role": "user",
+                    "content": f"Extract all details from this resume text:\n\n{raw_text}",
+                },
+            ],
