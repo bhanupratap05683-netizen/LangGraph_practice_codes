@@ -430,3 +430,23 @@ async def parse_resume_local_async(
     reasons_for_match: List[str] = Field(description="List of reasons why the resume matches the job description")
     reasons_for_mismatch: List[str] = Field(description="List of reasons why the resume does not fully match the job description")
     missing_skills: List[str] = Field(description="List of specific skills mentioned in the job description but missing from the resume")
+
+
+def get_empty_or_missing_details(data: ResumeData) -> List[str]:
+    """Programmatically identifies empty or missing fields for 100% accuracy."""
+    missing = []
+    if not data.name or data.name.strip() == "":
+        missing.append("Candidate name is missing")
+    if not data.email:
+        missing.append("Email address is missing")
+    if not data.phone:
+        missing.append("Phone number is missing")
+    if data.years_of_experience <= 0:
+        missing.append("Years of experience is missing or zero")
+    if not data.skills:
+        missing.append("No technical skills listed")
+    if not data.education:
+        missing.append("Education details are missing")
+    if not data.last_3_job_titles:
+        missing.append("Job titles are missing")
+    return missing
