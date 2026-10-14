@@ -511,4 +511,14 @@ async def main_async():
         print("Please paste the resume text below.")
         print("When you are finished, type 'DONE' on a new line and press Enter.")
         print("(Tip: To process a single PDF, run: python script.py path/to/resume.pdf)\n")
-        
+
+
+         lines = []
+                while True:
+                    try:
+                        line = input()
+                        if line.strip() == "DONE":
+                            break
+                        lines.append(line)
+                    except EOFError:
+                        break
