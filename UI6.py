@@ -450,3 +450,19 @@ def get_empty_or_missing_details(data: ResumeData) -> List[str]:
     if not data.last_3_job_titles:
         missing.append("Job titles are missing")
     return missing
+
+
+async def match_resume_to_job_async(
+    resume_data: ResumeData, 
+    empty_details: List[str],
+    job_description: str, 
+    model_name: str = "qwen2.5-coder:7b"
+) -> MatchEvaluation:
+    system_prompt = (
+        "You are an expert recruitment matcher. Compare the candidate's parsed resume data with the provided job description.\n\n"
+        "EVALUATION RULES:\n"
+        "- MATCH SCORE: Provide an integer score from 0 to 100. Deduct points for missing critical details (listed below) and missing skills.\n"
+        "- REASONS FOR MATCH: Highlight specific skills, experiences, or qualifications from the resume that directly align with the job description.\n"
+        "- REASONS FOR MISMATCH: Highlight areas where the candidate falls short (e.g., insufficient years of experience, wrong domain, missing contact details, missing soft skills).\n"
+        "- MISSING SKILLS: List specific technical skills, tools, or qualifications explicitly mentioned in the job description but absent from the resume."
+    )
