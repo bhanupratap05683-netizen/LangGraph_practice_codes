@@ -522,3 +522,14 @@ async def main_async():
                         lines.append(line)
                     except EOFError:
                         break
+
+                     raw_text = "\n".join(lines)
+                            
+                            if not raw_text.strip():
+                                print("No resume text provided. Exiting.")
+                                return
+                    
+                        print("\nExtracting and parsing data...\n")
+                        
+                        # 1. Parse Resume (Async)
+                        data = await parse_resume_local_async(raw_text)
