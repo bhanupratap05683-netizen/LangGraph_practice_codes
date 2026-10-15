@@ -538,4 +538,12 @@ def get_empty_or_missing_details(data: ResumeData) -> List[str]:
     if not data.last_3_job_titles:
         missing.append("Job titles are missing")
     return missing
+final_output = {
+        "resume_details": data.model_dump(),
+        "empty_or_missing_details": empty_details,
+        "match_score": match_eval.match_score,
+        "reasons_for_match": match_eval.reasons_for_match,
+        "reasons_for_mismatch": match_eval.reasons_for_mismatch,
+        "missing_skills": match_eval.missing_skills
+    }
 
