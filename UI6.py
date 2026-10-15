@@ -513,36 +513,7 @@ async def main_async():
         print("(Tip: To process a single PDF, run: python script.py path/to/resume.pdf)\n")
 
 
-         lines = []
-                while True:
-                    try:
-                        line = input()
-                        if line.strip() == "DONE":
-                            break
-                        lines.append(line)
-                    except EOFError:
-                        break
-
-                     raw_text = "\n".join(lines)
-                            
-                            if not raw_text.strip():
-                                print("No resume text provided. Exiting.")
-                                return
-                    
-                        print("\nExtracting and parsing data...\n")
-                        
-                        # 1. Parse Resume (Async)
-                        data = await parse_resume_local_async(raw_text)
-
-                     # 2. Identify empty details programmatically
-                        empty_details = get_empty_or_missing_details(data)
-                        
-                        print("Evaluating match against Financial Data Analyst (Quantitative Analytics) role...\n")
-                        
-                        # 3. Evaluate Match (Async)
-                        match_eval = await match_resume_to_job_async(data, empty_details, TARGET_JOB_DESCRIPTION)
-
-
+    
                # 4. Build Final Unified JSON Output
                 final_output = {
                     "resume_details": data.model_dump(),
