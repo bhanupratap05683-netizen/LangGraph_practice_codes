@@ -515,11 +515,4 @@ async def main_async():
 
     
                # 4. Build Final Unified JSON Output
-                final_output = {
-                    "resume_details": data.model_dump(),
-                    "empty_or_missing_details": empty_details,
-                    "match_score": match_eval.match_score,
-                    "reasons_for_match": match_eval.reasons_for_match,
-                    "reasons_for_mismatch": match_eval.reasons_for_mismatch,
-                    "missing_skills": match_eval.missing_skills
-                }            
+  
