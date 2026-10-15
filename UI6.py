@@ -515,4 +515,8 @@ async def main_async():
 
     
                # 4. Build Final Unified JSON Output
+  print("\n" + "="*60)
+      print("FINAL JSON OUTPUT")
+      print("="*60)
+      print(json.dumps(final_output, indent=2))
   
