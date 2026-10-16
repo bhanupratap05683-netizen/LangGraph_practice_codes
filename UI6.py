@@ -547,3 +547,18 @@ final_output = {
         "missing_skills": match_eval.missing_skills
     }
 
+
+
+  if not raw_text.strip():
+                print("No text could be extracted from the PDF. It might be image-only or corrupted.")
+                return
+        else:
+            print("Invalid argument. Please provide a valid single PDF file.")
+            print("Usage: python script.py path/to/resume.pdf")
+            return
+    else:
+        # ORIGINAL FUNCTIONALITY: Terminal Text Input
+        print("Please paste the resume text below.")
+        print("When you are finished, type 'DONE' on a new line and press Enter.")
+        print("(Tip: To process a single PDF, run: python script.py path/to/resume.pdf)\n")
+        
