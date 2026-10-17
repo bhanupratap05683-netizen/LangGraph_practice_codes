@@ -561,4 +561,17 @@ final_output = {
         print("Please paste the resume text below.")
         print("When you are finished, type 'DONE' on a new line and press Enter.")
         print("(Tip: To process a single PDF, run: python script.py path/to/resume.pdf)\n")
+ # Using asyncio.to_thread to make the synchronous ollama.chat call non-blocking
+    response = await asyncio.to_thread(
+        ollama.chat,
+        model=model_name,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {
+                "role": "user",
+                "content": f"Extract all details from this resume text:\n\n{raw_text}",
+            },
+        ],
+        format=ResumeData.model_json_schema(),
+        options={
         
