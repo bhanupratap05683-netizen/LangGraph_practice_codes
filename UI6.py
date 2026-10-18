@@ -634,3 +634,13 @@ def extract_phone_fallback(text: str) -> str:
         except Exception as e:
             print(f"  -> Error processing {filename}: {e}")
             
+while True:
+            try:
+                line = input()
+                # Check if the user typed the termination keyword
+                if line.strip() == "DONE":
+                    break
+                lines.append(line)
+            except EOFError:
+                # Handles Ctrl+D (Mac/Linux) or Ctrl+Z (Windows) gracefully
+                break
