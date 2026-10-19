@@ -644,3 +644,10 @@ while True:
             except EOFError:
                 # Handles Ctrl+D (Mac/Linux) or Ctrl+Z (Windows) gracefully
                 break
+
+if not raw_text.strip():
+            print("No resume text provided. Exiting.")
+        else:
+            print("\nProcessing resume...\n")
+            data = parse_resume_local(raw_text)
+            print(data.model_dump_json
