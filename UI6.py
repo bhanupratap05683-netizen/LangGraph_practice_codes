@@ -665,27 +665,4 @@ def extract_phone_fallback(text: str) -> str:
     # Matches international formats: +91 98765 43210, (555) 234-5678, +1-555-234-5678, etc.
     match = re.search(r"(\+?\d{1,3}[-.\s]?)?(\(?\d{3,5}\)?[-.\s]?)?\d{3,5}[-.\s]?\d{4,5}", text)
     return match.group(0).strip() if match else ""
-
-if __name__ == "__main__":
-    # Check if a single PDF file is passed as a command-line argument
-    if len(sys.argv) > 1:
-        target = sys.argv[1]
-        if os.path.isfile(target) and target.lower().endswith(".pdf"):
-            print(f"Processing single PDF: {target}\n")
-            raw_text = extract_text_from_pdf(target)
-            
-            if raw_text.strip():
-                print("Extracting and parsing data...\n")
-                data = parse_resume_local(raw_text)
-                print(data.model_dump_json(indent=2))
-            else:
-                print("No text could be extracted from the PDF. It might be image-only or corrupted.")
-        else:
-            print("Invalid argument. Please provide a valid single PDF file.")
-            print("Usage: python script.py path/to/resume.pdf")
-    else:
-        # ORIGINAL FUNCTIONALITY: Terminal Text Input
-        print("Please paste the resume text below.")
-        print("When you are finished, type 'DONE' on a new line and press Enter.")
-        print("(Tip: To process a single PDF, run: python script.py path/to/resume.pdf)\n")
    
