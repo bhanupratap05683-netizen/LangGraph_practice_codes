@@ -611,17 +611,7 @@ def extract_phone_fallback(text: str) -> str:
                 print(f"  -> Skipped: No text extracted.")
                 continue
             
-            # 2. AI Parsing
-            parsed_data = parse_resume_local(raw_text)
-            
-            # 3. Structured JSON accumulation
-            results.append({
-                "file": filename,
-                "parsed_data": parsed_data.model_dump()
-            })
-            print(f"  -> Success: Extracted '{parsed_data.name}'")
-        except Exception as e:
-            print(f"  -> Error processing {filename}: {e}")
+
             
 
 
