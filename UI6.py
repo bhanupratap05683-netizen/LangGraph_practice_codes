@@ -642,17 +642,5 @@ if not raw_text.strip():
             print(data.model_dump_json
 
 
-def extract_text_from_pdf(pdf_path: str) -> str:
-    """Extracts text from a single PDF file using PyMuPDF."""
-    if not HAS_PYMUPDF:
-        raise ImportError("PyMuPDF is required for PDF extraction. Install it via 'pip install pymupdf'")
-    
-    text = ""
-    try:
-        with fitz.open(pdf_path) as doc:
-            for page in doc:
-                text += page.get_text()
-    except Exception as e:
-        print(f"Error reading PDF {pdf_path}: {e}")
-    return text
+
 
