@@ -632,6 +632,14 @@ def extract_phone_fallback(text: str) -> str:
     last_3_job_titles: List[str] = Field(
         description="List of job titles held by candidate"
     )    
+model = ChatOllama(
+    model="qwen2.5-coder:7b",
+    temperature=0.0,    
+    base_url="http://localhost:11434"
+)
+prompt = template.format_prompt(loader=docs[0].page_content).to_messages()
+result = model.invoke(prompt)  
+print(result.content)
 
 
 
