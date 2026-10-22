@@ -612,7 +612,26 @@ def extract_phone_fallback(text: str) -> str:
                 continue
             
 
-            
+        class ResumeData(BaseModel):
+    name: str = Field(description="Full name of the candidate")
+    email: str = Field(
+        description="Candidate's email address (use empty string '' if not found)"
+    )
+    phone: str = Field(
+        description="Candidate's phone number with country/area code (use empty string '' if not found)"
+    )
+    years_of_experience: float = Field(
+        description="Total calculated work experience in years (e.g. 4.0)"
+    )
+    skills: List[str] = Field(
+        description="All technical skills, programming languages, and analytical tools mentioned"
+    )
+    education: List[str] = Field(
+        description="List of degrees, universities, or schools attended (e.g. ['B.Com - Bangalore University'])"
+    )
+    last_3_job_titles: List[str] = Field(
+        description="List of job titles held by candidate"
+    )    
 
 
 
