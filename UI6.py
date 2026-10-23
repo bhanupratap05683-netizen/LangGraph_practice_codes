@@ -601,15 +601,7 @@ def extract_phone_fallback(text: str) -> str:
     # Matches international formats: +91 98765 43210, (555) 234-5678, +1-555-234-5678, etc.
     match = re.search(r"(\+?\d{1,3}[-.\s]?)?(\(?\d{3,5}\)?[-.\s]?)?\d{3,5}[-.\s]?\d{4,5}", text)
     return match.group(0).strip() if match else ""
- for pdf_path in pdf_files:
-        filename = os.path.basename(pdf_path)
-        print(f"Processing: {filename}")
-        try:
-            # 1. Text Extraction
-            raw_text = extract_text_from_pdf(pdf_path)
-            if not raw_text.strip():
-                print(f"  -> Skipped: No text extracted.")
-                continue
+
             
 
 
