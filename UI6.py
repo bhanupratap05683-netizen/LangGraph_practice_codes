@@ -593,16 +593,6 @@ def extract_phone_fallback(text: str) -> str:
     # Matches international formats: +91 98765 43210, (555) 234-5678, +1-555-234-5678, etc.
     match = re.search(r"(\+?\d{1,3}[-.\s]?)?(\(?\d{3,5}\)?[-.\s]?)?\d{3,5}[-.\s]?\d{4,5}", text)
     return match.group(0).strip() if match else ""
-while True:
-    prompt = input("You: ")
-    messages.append(HumanMessage(content=prompt))
-    if prompt.lower() in ["exit", "quit"]:
-        print(messages)
-        print("Chalo bhaag jao! Bye!")
-        break
-    response = model.invoke(messages)
-    messages.append(AIMessage(content=response.content))
-    print(f"Gyani: {response.content}")    
 
 
 
