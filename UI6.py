@@ -593,9 +593,7 @@ def load_model():
         model="qwen2.5-coder:7b",
         temperature=0.0,    
         base_url="http://localhost:11434"
-    )
 
-model = load_model()
 
 
 
