@@ -588,6 +588,21 @@ def extract_email_fallback(text: str) -> str:
     match = re.search(r"[\w\.-]+@[\w\.-]+\.\w+", text)
     return match.group(0) if match else ""
 
+def load_model():
+    return ChatOllama(
+        model="qwen2.5-coder:7b",
+        temperature=0.0,    
+        base_url="http://localhost:11434"
+    )
+
+model = load_model()
+
+# --- Define Modes ---
+mode_prompts = {
+    "Funny": "You are a funny AI agent named Gyani. Respond in a highly humorous, witty, and funny way. Use jokes and puns.",
+    "Angry": "You are an angry AI agent named Gyani. Respond very aggressively, impatiently, and rudely. Act like you are annoyed that the user is bothering you.",
+    "Sad": "You are a very sad and depressed AI agent named Gyani. Respond in a melancholic, sorrowful, and emotional way. Sigh often and act heartbroken."
+}
 
 
 
