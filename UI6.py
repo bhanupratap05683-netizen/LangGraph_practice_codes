@@ -583,16 +583,7 @@ class ResumeData(BaseModel):
     )
     last_3_job_titles: List[str] = Field(
         description="List of job titles held by candidate"
-    )
-def extract_email_fallback(text: str) -> str:
-    match = re.search(r"[\w\.-]+@[\w\.-]+\.\w+", text)
-    return match.group(0) if match else ""
-
-def load_model():
-    return ChatOllama(
-        model="qwen2.5-coder:7b",
-        temperature=0.0,    
-        base_url="http://localhost:11434"
+    )"
 
 
 
