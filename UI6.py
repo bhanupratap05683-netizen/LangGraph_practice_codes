@@ -585,8 +585,6 @@ class ResumeData(BaseModel):
         description="List of job titles held by candidate"
     )"
 
-
-
     if not result.email:
         result.email = extract_email_fallback(raw_text)
     if not result.phone:
@@ -596,6 +594,11 @@ class ResumeData(BaseModel):
     result.last_3_job_titles = result.last_3_job_titles[:3]
 
     return result
+def extract_phone_fallback(text: str) -> str:
+    # Matches international formats: +91 98765 43210, (555) 234-5678, +1-555-234-5678, etc.
+    match = re.search(r"(\+?\d{1,3}[-.\s]?)?(\(?\d{3,5}\)?[-.\s]?)?\d{3,5}[-.\s]?\d{4,5}", text)
+    return match.group(0).strip() if match else ""
+
 
 
 
