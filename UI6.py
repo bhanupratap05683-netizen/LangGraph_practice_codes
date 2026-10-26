@@ -562,6 +562,13 @@ def parse_resume_local(
         "- YEARS OF EXPERIENCE: Calculate the total career duration across all positions.\n"
         "- LAST 3 JOB TITLES: Extract the recent job designations."
     )
+try:
+    import fitz  # PyMuPDF
+    HAS_PYMUPDF = True
+except ImportError:
+    HAS_PYMUPDF = False
+    print("Warning: PyMuPDF not installed. Install with 'pip install pymupdf' to enable PDF handling.")
+
 
 
 
