@@ -568,7 +568,21 @@ result = model.invoke(prompt)
 print(result.content)
 
 
-
+  response = ollama.chat(
+        model=model_name,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {
+                "role": "user",
+                "content": f"Extract all details from this resume text:\n\n{raw_text}",
+            },
+        ],
+        format=ResumeData.model_json_schema(),
+        options={
+            "temperature": 0.0,
+            "num_ctx": 4096,
+        },
+    )
 
 
 
