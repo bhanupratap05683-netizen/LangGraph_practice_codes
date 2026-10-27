@@ -563,7 +563,9 @@ def parse_resume_local(
         "- LAST 3 JOB TITLES: Extract the recent job designations."
     )
 
-
+prompt = template.format_prompt(loader=docs[0].page_content).to_messages()
+result = model.invoke(prompt)  
+print(result.content)
 
 
 
