@@ -585,4 +585,19 @@ print(result.content)
     )
 
 
-
+if __name__ == "__main__":
+    print("Please paste the resume text below.")
+    print("When you are finished, type 'DONE' on a new line and press Enter.\n")
+    
+    lines = []
+    while True:
+        try:
+            line = input()
+            # Check if the user typed the termination keyword
+            if line.strip() == "DONE":
+                break
+            lines.append(line)
+        except EOFError:
+            # Handles Ctrl+D (Mac/Linux) or Ctrl+Z (Windows) gracefully
+            break
+    
