@@ -600,4 +600,13 @@ if __name__ == "__main__":
         except EOFError:
             # Handles Ctrl+D (Mac/Linux) or Ctrl+Z (Windows) gracefully
             break
-    
+     while True:
+        try:
+            line = input()
+            # Check if the user typed the termination keyword
+            if line.strip() == "DONE":
+                break
+            lines.append(line)
+        except EOFError:
+            # Handles Ctrl+D (Mac/Linux) or Ctrl+Z (Windows) gracefully
+            break
