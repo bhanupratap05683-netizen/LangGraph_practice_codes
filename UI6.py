@@ -604,3 +604,5 @@ if __name__ == "__main__":
         except EOFError:
             # Handles Ctrl+D (Mac/Linux) or Ctrl+Z (Windows) gracefully
             break
+template = ChatPromptTemplate.from_messages([
+    ("system", "You are a helpful assistant that provides summaries of documents based on the provided document."),("human", "{loader}")])
