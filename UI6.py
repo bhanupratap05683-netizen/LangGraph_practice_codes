@@ -115,24 +115,6 @@ def extract_text_from_pdf(pdf_path: str) -> str:
             logging.error(f"Error reading PDF {pdf_path}: {e}")
         return text
 
-def get_empty_or_missing_details(data: ResumeData) -> List[str]:
-    missing = []
-    if not data.name or data.name == "Unknown":
-        missing.append("Candidate name is missing")
-    if not data.email:
-        missing.append("Email address is missing")
-    if not data.phone:
-        missing.append("Phone number is missing")
-    if data.years_of_experience <= 0:
-        missing.append("Years of experience is missing or zero")
-    if not data.skills:
-        missing.append("No technical skills listed")
-    if not data.education:
-        missing.append("Education details are missing")
-    if not data.last_3_job_titles:
-        missing.append("Job titles are missing")
-    return missing    
-
 async def parse_resume_local_async(raw_text: str, model_name: str = MODEL_NAME) -> ResumeData:
     system_prompt = (
         "You are an expert recruitment parser. Extract all candidate information from the resume text into the required JSON format.\n\n"
