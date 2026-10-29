@@ -14,13 +14,6 @@ except ImportError:
     HAS_PYMUPDF = False
     print("❌ Warning: PyMuPDF not installed. Install with 'pip install pymupdf'")
 
-try:
-    from tqdm.asyncio import tqdm_asyncio
-    HAS_TQDM = True
-except ImportError:
-    HAS_TQDM = False
-    print("⚠️ Warning: tqdm not installed. Install with 'pip install tqdm' for progress bars.")
-
 import ollama
 from pydantic import BaseModel, Field
 logging.basicConfig(
