@@ -6,15 +6,7 @@ import ollama
 import streamlit as st
 from pydantic import BaseModel, Field, ConfigDict, ValidationError
 import ollama
-from pydantic import BaseModel, Field
-model = ChatOllama(
-    model="qwen2.5-coder:7b",
-    temperature=0.0,    
-    base_url="http://localhost:11434"
-)
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s"
+from pydantic import BaseModel, Field"
 )
 
 # --- CONFIGURABLE CONSTANTS ---
