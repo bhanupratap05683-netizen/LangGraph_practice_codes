@@ -6,8 +6,8 @@ import ollama
 import streamlit as st
 from pydantic import BaseModel, Field, ConfigDict, ValidationError
 import ollama
-from pydantic import BaseModel, Field"
-)
+from pydantic import BaseModel,
+
 
 # --- CONFIGURABLE CONSTANTS ---
 INPUT_FOLDER = "./resumes"          # Folder containing the 50 PDF resumes
