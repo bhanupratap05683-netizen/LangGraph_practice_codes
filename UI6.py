@@ -77,15 +77,6 @@ def chunk_text(text: str, max_words: int = 3000) -> str:
         return text
     else:
         return " ".join(words[:max_words]) + " ... [truncated]"
-
-    text = ""
-    try:
-        with fitz.open(pdf_path) as doc:                for page in doc:
-                    text += page.get_tet()
-        except Exception as e
-            logging.error(f"Error reading PDF {pdf_path}: {e}")
-        return text
-
 async def parse_resume_local_async(raw_text: str, model_name: str = MODEL_NAME) -> ResumeData:
     system_prompt = (
         "You are an expert recruitment parser. Extract all candidate information from the resume text into the required JSON format.\n\n"
