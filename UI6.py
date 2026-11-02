@@ -106,7 +106,8 @@ async def match_resume_to_job_async(
             "- MISSING SKILLS: List specific technical skills, tools, or qualifications explicitly mentioned in the job description but absent."
         )
     resume_json = resume_data.model_dump_json(indent=2)
-        empty_details_str = ", ".join(empty_details) if empty_details else "None"
+        empty_details_str = ", ".join(empty_details)
+                if empty_details else "None"
     
         response = await asyncio.to_thread(
             ollama.chat,
