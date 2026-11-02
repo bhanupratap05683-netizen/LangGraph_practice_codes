@@ -108,18 +108,6 @@ async def match_resume_to_job_async(
     resume_json = resume_data.model_dump_json(indent=2)
         empty_details_str = ", ".join(empty_details)
                 if empty_details else "None"
-    
-        response = await asyncio.to_thread(
-            ollama.chat,
-            model=model_name,
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": f"Resume Data:\n{resume_json}\n\nEmpty/Missing Resume Details:\n{empty_details_str}\n\nJob Description:\n{job_description}"},
-            ],
-            format=MatchEvaluation.model_json_schema(),
-            options={"temperature": 0.0, "num_ctx": 4096},
-        )
-
         return MatchEvaluation.model_validate_json(response.message.content)
 async def process_single_resume(pdf_path: str, semaphore: asyncio.Semaphore) -> dict:
     """Processes a single resume with concurrency control."""
@@ -187,8 +175,7 @@ async def main_async():
     # Add Rank column
     for idx, res in enumerate(ranked_results, start=1):
         res["rank"] = idx
-
-# 6. Output Top 10 to Console
+ 6. Output Top 10 to Console
     print("\n" + "="*90)
     print("🏆 TOP 10 RANKED CANDIDATES 🏆")
     print("="*90)
