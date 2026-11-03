@@ -523,14 +523,5 @@ if __name__ == "__main__":
         except EOFError:
             # Handles Ctrl+D (Mac/Linux) or Ctrl+Z (Windows) gracefully
             break
-template = ChatPromptTemplate.from_messages([
-    ("system", "You are a helpful assistant that provides summaries of documents based on the provided document."),("human", "{loader}")])
-text = ""
-    try:
-        with fitz.open(pdf_path) as doc:
-            for page in doc:
-                text += page.get_text()
-    except Exception as e:
-        print(f"Error reading PDF {pdf_path}: {e}")
-    return text
+
 
