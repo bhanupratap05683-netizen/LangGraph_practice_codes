@@ -497,9 +497,5 @@ print(result.content)
         },
     )
 
-
-if __name__ == "__main__":
-    print("Please paste the resume text below.")
-    print("When you are finished, type 'DONE' on a new line and press Enter.\n")
     
 
