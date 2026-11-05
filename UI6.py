@@ -448,35 +448,6 @@ final_output = {
         options={
       )"
 
-class ResumeData(BaseModel):
-    name: str = Field(description="Full name of the candidate")
-    email: str = Field(
-        description="Candidate's email address (use empty string '' if not found)"
-    )
-    phone: str = Field(
-        description="Candidate's phone number with country/area code (use empty string '' if not found)"
-    )
-    years_of_experience: float = Field(
-        description="Total calculated work experience in years (e.g. 4.0)"
-    )
-    skills: List[str] = Field(
-        description="All technical skills, programming languages, and analytical tools mentioned"
-    )
-    education: List[str] = Field(
-
-    loader = WebBaseLoader(url)
-docs = loader.load()
-
-
-template = ChatPromptTemplate.from_messages([
-    ("system", "You are a helpful assistant that provides summaries of documents based on the provided document."),("human", "{loader}")])
-
-model = ChatOllama(
-    model="qwen2.5-coder:7b",
-    temperature=0.0,    
-    base_url="http://localhost:11434"
-)
-
 
     
 
