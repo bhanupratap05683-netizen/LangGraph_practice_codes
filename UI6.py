@@ -464,6 +464,19 @@ class ResumeData(BaseModel):
     )
     education: List[str] = Field(
 
+    loader = WebBaseLoader(url)
+docs = loader.load()
+
+
+template = ChatPromptTemplate.from_messages([
+    ("system", "You are a helpful assistant that provides summaries of documents based on the provided document."),("human", "{loader}")])
+
+model = ChatOllama(
+    model="qwen2.5-coder:7b",
+    temperature=0.0,    
+    base_url="http://localhost:11434"
+)
+
 
     
 
