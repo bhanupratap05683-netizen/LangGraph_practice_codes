@@ -448,16 +448,6 @@ final_output = {
         options={
       )"
 
-    if not result.email:
-        result.email = extract_email_fallback(raw_text)
-    if not result.phone:
-        result.phone = extract_phone_fallback(raw_text)
-
-    # Ensure max 3 titles cleanly
-    result.last_3_job_titles = result.last_3_job_titles[:3]
-
-    return result
-
 
 
     
