@@ -52,16 +52,6 @@ def extract_phone_fallback(text: str) -> str:
     match = re.search(r"(\+?\d{1,3}[-.\s]?)?(\(?\d{3,5}\)?[-.\s]?)?\d{3,5}[-.\s]?\d{4,5}", text)
     return match.group(0).strip() if match else ""
 
-def chunk_text(text: str, max_words: int = 3000) -> str:
-    """
-    Text Chunking: Truncates text if it exceeds a reasonable word limit.
-    Prevents context window overflow while retaining the most critical info (usually at the top of resumes).
-    """
-    words = text.split()
-    if len(words) <= max_words:
-        return text
-    else:
-        return " ".join(words[:max_words]) + " ... [truncated]"
 async def parse_resume_local_async(raw_text: str, model_name: str = MODEL_NAME) -> ResumeData:
     system_prompt = (
         "You are an expert recruitment parser. Extract all candidate information from the resume text into the required JSON format.\n\n"
