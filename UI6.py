@@ -48,15 +48,6 @@ Preferred Qualifications:
 """
 
 # ----------------------------------------------------
-class ResumeData(BaseModel):
-    name: str = Field(default="Unknown", description="Full name of the candidate")
-    email: str = Field(default="", description="Candidate's email address")
-    phone: str = Field(default="", description="Candidate's phone number")
-    years_of_experience: float = Field(default=0.0, description="Total calculated work experience in years")
-    skills: List[str] = Field(default_factory=list, description="All technical skills, programming languages, and analytical tools mentioned")
-    education: List[str] = Field(default_factory=list, description="List of degrees, universities, or schools attended")
-    last_3_job_titles: List[str] = Field(default_factory=list, description="List of recent job titles held by candidate")
-
 def extract_phone_fallback(text: str) -> str:
     match = re.search(r"(\+?\d{1,3}[-.\s]?)?(\(?\d{3,5}\)?[-.\s]?)?\d{3,5}[-.\s]?\d{4,5}", text)
     return match.group(0).strip() if match else ""
