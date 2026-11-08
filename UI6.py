@@ -361,18 +361,6 @@ async def main_async():
         print("When you are finished, type 'DONE' on a new line and press Enter.")
         print("(Tip: To process a single PDF, run: python script.py path/to/resume.pdf)\n")
 
-
-    
-               # 4. Build Final Unified JSON Output
-  print("\n" + "="*60)
-      print("FINAL JSON OUTPUT")
-      print("="*60)
-      print(json.dumps(final_output, indent=2))
-
-def get_empty_or_missing_details(data: ResumeData) -> List[str]:
-    """Programmatically identifies empty or missing fields for 100% accuracy."""
-    missing = []
-    
             
 
 
