@@ -242,59 +242,6 @@ async def parse_resume_local_async(
         response = await asyncio.to_thread(
             ollama.chat,
             model=model_name,
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {
-                    "role": "user",
-                    "content": f"Extract all details from this resume text:\n\n{raw_text}",
-                },
-            ],
-            format=ResumeData.model_json_schema(),
-                    options={
-                        "temperature": 0.0,
-                        "num_ctx": 4096,
-                    },
-                )
-            
-                result = ResumeData.model_validate_json(response.message.content)
-            
-                # Fallback checks: If the LLM returned empty strings for contact info, fill via regex
-                if not result.email:
-                    result.email = extract_email_fallback(raw_text)
-                if not result.phone:
-                    result.phone = extract_phone_fallback(raw_text)
-
-
-
-        if not result.email:
-        result.email = extract_email_fallback(raw_text)
-    if not result.phone:
-        result.phone = extract_phone_fallback(raw_text)
-
-    # Ensure max 3 titles cleanly
-    result.last_3_job_titles = result.last_3_job_titles[:3]
-
-    return result
-
-
-# ----------------------------------------------------
-# 4. Test
-# ----------------------------------------------------
-if __name__ == "__main__":
-    sample_resume = """
-    Aman Sharma
-    aman.sharma@example.in | +91 98765 43210 | Bangalore, India
-
-    SUMMARY
-    Financial Data Analyst with 4+ years of experience working with financial modeling, 
-    quantitative reports, and automated ETL pipelines using Python and Excel.
-
-    WORK EXPERIENCE
-    Senior Quantitative Analyst - Capital Alpha (May 2023 - Present)
-    - Developed risk assessment models and automated portfolio rebalancing.
-    
-    Data Analyst - Quantify Analytics (Jan 2021 - Apr 2023)
-    
             
 
 
