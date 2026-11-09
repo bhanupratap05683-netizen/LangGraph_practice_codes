@@ -348,14 +348,6 @@ async def main_async():
             print(f"Processing single PDF: {target}\n")
             raw_text = extract_text_from_pdf(target)
             
-            if not raw_text.strip():
-                print("No text could be extracted from the PDF. It might be image-only or corrupted.")
-                return
-        else:
-            print("Invalid argument. Please provide a valid single PDF file.")
-            print("Usage: python script.py path/to/resume.pdf")
-            retur")
-
             
 
 
