@@ -211,36 +211,7 @@ if __name__ == "__main__":
 
     def extract_text_from_pdf(pdf_path: str) -> str:
     """Extracts text from a single PDF file using PyMuPDF."""
-    if not HAS_PYMUPDF:
-        raise ImportError("PyMuPDF is required for PDF extraction. Install it via 'pip install pymupdf'")
-
-
-    text = ""
-        try:
-            with fitz.open(pdf_path) as doc:
-                for page in doc:
-                    text += page.get_text()
-        except Exception as e:
-            print(f"Error reading PDF {pdf_path}: {e}")
-        return text
-
-async def parse_resume_local_async(
-    raw_text: str, model_name: str = "qwen2.5-coder:7b"
-) -> ResumeData:
-    system_prompt = (
-        "You are an expert recruitment parser. Extract all candidate information from the resume text into the required JSON format.\n\n"
-        "EXTRACTION RULES:\n"
-        "- NAME: Found at the very beginning of the document.\n"
-        "- EMAIL & PHONE: Extract exactly as printed near the contact header.\n"
-        "- EDUCATION: Extract degree name and institution as a list of strings.\n"
-        "- SKILLS: Extract all technical, coding, software, and financial tools.\n"
-        "- YEARS OF EXPERIENCE: Calculate the total career duration across all positions.\n"
-        "- LAST 3 JOB TITLES: Extract the recent job designations."
-    )
-
-      # Using asyncio.to_thread to make the synchronous ollama.chat call non-blocking
-        response = await asyncio.to_thread(
-            ollama.chat,
+    if not HAS_PYMU
             model=model_name,
             
 
