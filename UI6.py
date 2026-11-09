@@ -340,14 +340,6 @@ async def match_resume_to_job_async(
 
 async def main_async():
     raw_text = ""
-    
-    # Check if a single PDF file is passed as a command-line argument
-    if len(sys.argv) > 1:
-        target = sys.argv[1]
-        if os.path.isfile(target) and target.lower().endswith(".pdf"):
-            print(f"Processing single PDF: {target}\n")
-            raw_text = extract_text_from_pdf(target)
-            
             
 
 
