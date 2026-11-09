@@ -340,6 +340,37 @@ async def match_resume_to_job_async(
 
 async def main_async():
     raw_text = ""
+
+
+        if not result.email:
+        result.email = extract_email_fallback(raw_text)
+    if not result.phone:
+        result.phone = extract_phone_fallback(raw_text)
+
+    # Ensure max 3 titles cleanly
+    result.last_3_job_titles = result.last_3_job_titles[:3]
+
+    return result
+
+
+# ----------------------------------------------------
+# 4. Test
+# ----------------------------------------------------
+if __name__ == "__main__":
+    sample_resume = """
+    Aman Sharma
+    aman.sharma@example.in | +91 98765 43210 | Bangalore, India
+
+    SUMMARY
+    Financial Data Analyst with 4+ years of experience working with financial modeling, 
+    quantitative reports, and automated ETL pipelines using Python and Excel.
+
+    WORK EXPERIENCE
+    Senior Quantitative Analyst - Capital Alpha (May 2023 - Present)
+    - Developed risk assessment models and automated portfolio rebalancing.
+    
+    Data Analyst - Quantify Analytics (Jan 2021 - Apr 2023)
+    
             
 
 
