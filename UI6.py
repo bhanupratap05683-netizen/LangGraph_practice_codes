@@ -181,39 +181,7 @@ async def main_async():
     )
     skills: List[str] = Field(
         description="All technical skills, programming languages, and analytical tools mentioned"
-    )
-    education: List[str] = Field(
-        description="List of degrees, universities, or schools attended (e.g. ['B.Com - Bangalore University'])"
-    )
-    last_3_job_titles: List[str] = Field(
-        description="List of job titles held by candidate"
-    )
-def extract_email_fallback(text: str) -> str:
-    match = re.search(r"[\w\.-]+@[\w\.-]+\.\w+", text)
-    return match.group(0) if match else ""
-
-
-def extract_phone_fallback(text: str) -> str:
-    # Matches international formats: +91 98765 43210, (555) 234-5678, +1-555-234-5678, etc.
-    match = re.search(r"(\+?\d{1,3}[-.\s]?)?(\(?\d{3,5}\)?[-.\s]?)?\d{3,5}[-.\s]?\d{4,5}", text)
-    return match.group(0).strip() if match else 
-
-    try:
-    import fitz  # PyMuPDF
-    HAS_PYMUPDF = True
-except ImportError:
-    HAS_PYMUPDF = False
-    print("Warning: PyMuPDF not installed. Install with 'pip install pymupdf' to enable PDF handling.")
-
-
-if __name__ == "__main__":
-    asyncio.run(main_async())
-
-    def extract_text_from_pdf(pdf_path: str) -> str:
-    """Extracts text from a single PDF file using PyMuPDF."""
-    if not HAS_PYMU
-            model=model_name,
-            
+             
 
 
     
