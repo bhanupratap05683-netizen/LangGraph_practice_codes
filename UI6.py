@@ -151,36 +151,7 @@ async def main_async():
 
     # Add Rank column
     for idx, res in enumerate(ranked_results, start=1):
-        res["rank"] = idx
- 6. Output Top 10 to Console
-    print("\n" + "="*90)
-    print("🏆 TOP 10 RANKED CANDIDATES 🏆")
-    print("="*90)
-    for res in ranked_results[:10]:
-        if res["status"] == "Success":
-            print(f"Rank #{res['rank']:<2} | Score: {res['match_score']:<3}/100 | Name: {res['name']:<20} | File: {res['file_name']}")
-            print(f"  ↳ Skills: {res['skills']}")
-            print(f"  ↳ Match:  {res['reasons_for_match'][:120]}...")
-            print("-" * 90)
-# 7. Export Full Results to CSV
-    csv_columns = [
-        "rank", "file_name", "name", "email", "phone", "years_of_experience", 
-        "match_score", "skills", "reasons_for_match", "reasons_for_mismatch", 
-        "missing_skills", "status" ]
-
-    class ResumeData(BaseModel):
-    name: str = Field(description="Full name of the candidate")
-    email: str = Field(
-        description="Candidate's email address (use empty string '' if not found)"
-    )
-    phone: str = Field(
-        description="Candidate's phone number with country/area code (use empty string '' if not found)"
-    )
-    years_of_experience: float = Field(
-        description="Total calculated work experience in years (e.g. 4.0)"
-    )
-    skills: List[str] = Field(
-        description="All technical skills, programming languages, and analytical tools mentioned"
+        res["rank"] = id
              
 
 
