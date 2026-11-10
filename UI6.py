@@ -125,33 +125,6 @@ async def main_async():
                logging.warning(f"No PDF files found in '{INPUT_FOLDER}'.")
                return                  
 
-    logging.info(f"✅ Found {len(pdf_files)} PDF resumes. Starting batch processing...")
-    
-        # 3. Setup Concurrency Control
-        semaphore = asyncio.Semaphore(MAX_CONCURRENT_TASKS)
-        all_results = []    
- # 4. Process in Chunks (Batch Chunking for memory/queue management)
-    for chunk in chunk_list(pdf_files, BATCH_CHUNK_SIZE):
-        logging.info(f"Processing chunk of {len(chunk)} resumes...")
-        
-        tasks = [process_single_resume(pdf_path, semaphore) for pdf_path in chunk]
-        
- # Progress bar for the current chunk
-        if HAS_TQDM:
-            chunk_results = await tqdm_asyncio.gather(*tasks, desc="Processing Resumes")
-        else:
-            chunk_results = await asyncio.gather(*tasks)
-            
-        all_results.extend(chunk_results)
-
-
-   # 5. Filter, Sort, and Rank
-    # Sort ALL by match_score descending (failed ones will naturally fall to the bottom with score 0)
-    ranked_results = sorted(all_results, key=lambda x: x["match_score"], reverse=True)
-
-    # Add Rank column
-    for idx, res in enumerate(ranked_results, start=1):
-        res["rank"] = id
              
 
 
