@@ -85,45 +85,6 @@ async def match_resume_to_job_async(
     resume_json = resume_data.model_dump_json(indent=2)
         empty_details_str = ", ".join(empty_details)
                 if empty_details else "None"
-        return MatchEvaluation.model_validate_json(response.message.content)
-async def process_single_resume(pdf_path: str, semaphore: asyncio.Semaphore) -> dict:
-    """Processes a single resume with concurrency control."""
-    async with semaphore:
-        file_name = os.path.basename(pdf_path)
-  except Exception as e:
-                    logging.error(f"Failed to process {file_name}: {e}")
-                    return {
-                        "file_name": file_name,
-                        "name": "Error",
-                        "email": "",
-                        "phone": "",
-                        "years_of_experience": 0,
-                        "match_score": 0,
-                        "skills": "",
-                        "reasons_for_match": "",
-                        "reasons_for_mismatch": str(e),
-                        "missing_skills": "",
-                        "status": "Failed"
-                    }  
-
-
-    def chunk_list(lst: list, chunk_size: int):
-    """Yield successive chunk_size-sized chunks from lst (Batch Chunking)."""
-    for i in range(0, len(lst), chunk_size):
-        yield lst[i:i + chunk_size]
-
-async def main_async():
-    # 1. Validate Input Folder
-    if not os.path.isdir(INPUT_FOLDER):
-        os.makedirs(INPUT_FOLDER, exist_ok=True)
-        logging.error(f"Input folder '{INPUT_FOLDER}' was missing. It has been created. Please add PDF resumes and run again.")
-        return
-    
-   # 2. Gather all PDF files
-           pdf_files = [str(p) for p in Path(INPUT_FOLDER).rglob("*.pdf")]
-           if not pdf_files:
-               logging.warning(f"No PDF files found in '{INPUT_FOLDER}'.")
-               return                  
 
              
 
