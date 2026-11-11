@@ -97,6 +97,20 @@ async def match_resume_to_job_async(
         "- YEARS OF EXPERIENCE: Calculate the total career duration across all positions.\n"
         "- LAST 3 JOB TITLES: Extract the recent job designations."
     )
+async def match_resume_to_job_async(
+    resume_data: ResumeData, 
+    empty_details: List[str],
+    job_description: str, 
+    model_name: str = MODEL_NAME
+) -> MatchEvaluation:
+    system_prompt = (
+        "You are an expert recruitment matcher. Compare the candidate's parsed resume data with the provided job description.\n\n"
+        "EVALUATION RULES:\n"
+        "- MATCH SCORE: Provide an integer score from 0 to 100. Deduct points for missing critical details and missing skills.\n"
+        "- REASONS FOR MATCH: Highlight specific skills, experiences, or qualifications that directly align.\n"
+        "- REASONS FOR MISMATCH: Highlight areas where the candidate falls short.\n"
+        "- MISSING SKILLS: List specific technical skills, tools, or qualifications explicitly mentioned in the job description but absent."
+    )
 
     
 
