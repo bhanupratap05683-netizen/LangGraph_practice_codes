@@ -195,18 +195,4 @@ if __name__ == "__main__":
                 "reasons_for_match": " | ".join(match_eval.reasons_for_match),
                 "reasons_for_mismatch": " | ".join(match_eval.reasons_for_mismatch),
                 "missing_skills": ", ".join(match_eval.missing_skills),
-                "status": "Success"
-    print("\nExtracting and parsing data...\n")
-    
-    # 1. Parse Resume (Async)
-    data = await parse_resume_local_async(raw_text)
-    
-    # 2. Identify empty details programmatically
-    empty_details = get_empty_or_missing_details(data)
-    
-    print("Evaluating match against Financial Data Analyst (Quantitative Analytics) role...\n")
-    
-    # 3. Evaluate Match (Async)
-    match_eval = await match_resume_to_job_async(data, empty_details, TARGET_JOB_DESCRIPTION)
-    
-    
+
