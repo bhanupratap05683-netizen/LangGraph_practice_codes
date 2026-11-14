@@ -58,33 +58,7 @@ async def parse_resume_local_async(raw_text: str, model_name: str = MODEL_NAME) 
         "- SKILLS: Extract all technical, coding, software, and financial tools.\n"
         "- YEARS OF EXPERIENCE: Calculate the total career duration across all positions.\n"
         "- LAST 3 JOB TITLES: Extract the recent job designations."
-    )
-
-    response = await asyncio.to_thread(
-            ollama.chat,
-            model=model_name,
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": f"Extract all details from this resume text:\n\n{raw_text}"},
-            ],
-       return result 
-async def match_resume_to_job_async(
-    resume_data: ResumeData, 
-    empty_details: List[str],
-    job_description: str, 
-    model_name: str = MODEL_NAME
-) -> MatchEvaluation:
-    system_prompt = (
-            "You are an expert recruitment matcher. Compare the candidate's parsed resume data with the provided job description.\n\n"
-            "EVALUATION RULES:\n"
-            "- MATCH SCORE: Provide an integer score from 0 to 100. Deduct points for missing critical details and missing skills.\n"
-            "- REASONS FOR MATCH: Highlight specific skills, experiences, or qualifications that directly align.\n"
-            "- REASONS FOR MISMATCH: Highlight areas where the candidate falls short.\n"
-            "- MISSING SKILLS: List specific technical skills, tools, or qualifications explicitly mentioned in the job description but absent."
-        )
-    resume_json = resume_data.model_dump_json(indent=2)
-        empty_details_str = ", ".join(empty_details)
-                if empty_details else "None"
+"
 
              async def parse_resume_local_async(raw_text: str, model_name: str = MODEL_NAME) -> ResumeData:
     system_prompt = (
