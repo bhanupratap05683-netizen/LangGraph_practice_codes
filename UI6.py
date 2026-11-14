@@ -195,4 +195,17 @@ if __name__ == "__main__":
                 "reasons_for_match": " | ".join(match_eval.reasons_for_match),
                 "reasons_for_mismatch": " | ".join(match_eval.reasons_for_mismatch),
                 "missing_skills": ", ".join(match_eval.missing_skills),
+def extract_text_from_pdf(pdf_path: str) -> str:
+    """Extracts text from a single PDF file using PyMuPDF."""
+    if not HAS_PYMUPDF:
+        raise ImportError("PyMuPDF is required. Install via 'pip install pymupdf'")
+    
+    text = ""
+    try:
+        with fitz.open(pdf_path) as doc:
+            for page in doc:
+                text += page.get_text()
+    except Exception as e:
+        logging.error(f"Error reading PDF {pdf_path}: {e}")
+    return text
 
