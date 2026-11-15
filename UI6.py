@@ -116,10 +116,5 @@ if __name__ == "__main__":
         if os.path.isfile(target) and target.lower().endswith(".pdf"):
             print(f"Processing single PDF: {target}\n")
             raw_text = extract_text_from_pdf(target)
-            
-            if raw_text.strip():
-                print("Extracting and parsing data...\n")
-                data = parse_resume_local(raw_text)
-                print(data.model_dump_json(indent=2))
-            
+        
 
