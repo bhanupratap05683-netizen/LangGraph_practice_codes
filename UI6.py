@@ -121,10 +121,5 @@ if __name__ == "__main__":
                 print("Extracting and parsing data...\n")
                 data = parse_resume_local(raw_text)
                 print(data.model_dump_json(indent=2))
-            else:
-                print("No text could be extracted from the PDF. It might be image-only or corrupted.")
-        else:
-            print("Invalid argument. Please provide a valid single PDF file.")
-            print("Usage: python script.py path/to/resume.pdf")
             
 
