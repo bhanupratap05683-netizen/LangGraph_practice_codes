@@ -126,10 +126,5 @@ if __name__ == "__main__":
         else:
             print("Invalid argument. Please provide a valid single PDF file.")
             print("Usage: python script.py path/to/resume.pdf")
-    else:
-        # ORIGINAL FUNCTIONALITY: Terminal Text Input
-        print("Please paste the resume text below.")
-        print("When you are finished, type 'DONE' on a new line and press Enter.")
-        print("(Tip: To process a single PDF, run: python script.py path/to/resume.pdf)\n)
             
 
