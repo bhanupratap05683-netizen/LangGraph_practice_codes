@@ -117,4 +117,19 @@ if __name__ == "__main__":
             print(f"Processing single PDF: {target}\n")
             raw_text = extract_text_from_pdf(target)
         
+        except Exception as e:
+            logging.error(f"Failed to process {file_name}: {e}")
+            return {
+                "file_name": file_name,
+                "name": "Error",
+                "email": "",
+                "phone": "",
+                "years_of_experience": 0,
+                "match_score": 0,
+                "skills": "",
+                "reasons_for_match": "",
+                "reasons_for_mismatch": str(e),
+                "missing_skills": "",
+                "status": "Failed"
+            }
 
