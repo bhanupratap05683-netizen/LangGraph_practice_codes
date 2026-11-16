@@ -102,20 +102,7 @@ response = await asyncio.to_thread(
             "num_ctx": 4096,
         },
     ""
-
-    try:
-    import fitz  # PyMuPDF
-    HAS_PYMUPDF = True
-except ImportError:
-    HAS_PYMUPDF = False
-    print("Warning: PyMuPDF not installed. Install with 'pip install pymupdf' to enable PDF handling.")
-if __name__ == "__main__":
-    # Check if a single PDF file is passed as a command-line argument
-    if len(sys.argv) > 1:
-        target = sys.argv[1]
-        if os.path.isfile(target) and target.lower().endswith(".pdf"):
-            print(f"Processing single PDF: {target}\n")
-            raw_text = extract_text_from_pdf(target)
+)
         
         except Exception as e:
             logging.error(f"Failed to process {file_name}: {e}")
