@@ -85,20 +85,5 @@ async def match_resume_to_job_async(
         "- REASONS FOR MISMATCH: Highlight areas where the candidate falls short.\n"
         "- MISSING SKILLS: List specific technical skills, tools, or qualifications explicitly mentioned in the job description but absent."
     )
-        
-        except Exception as e:
-            logging.error(f"Failed to process {file_name}: {e}")
-            return {
-                "file_name": file_name,
-                "name": "Error",
-                "email": "",
-                "phone": "",
-                "years_of_experience": 0,
-                "match_score": 0,
-                "skills": "",
-                "reasons_for_match": "",
-                "reasons_for_mismatch": str(e),
-                "missing_skills": "",
-                "status": "Failed"
-            }
+        }
 
