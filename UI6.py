@@ -85,5 +85,23 @@ async def match_resume_to_job_async(
         "- REASONS FOR MISMATCH: Highlight areas where the candidate falls short.\n"
         "- MISSING SKILLS: List specific technical skills, tools, or qualifications explicitly mentioned in the job description but absent."
     )
-        }
+    try:
+    import fitz  # PyMuPDF
+    HAS_PYMUPDF = True
+except ImportError:
+    HAS_PYMUPDF = False
+    print("Warning: PyMuPDF not installed. Install with 'pip install pymupdf' to enable PDF handling.")
+
+
+def extract_text_from_pdf(pdf_path: str) -> str:
+    """Extracts text from a single PDF file using PyMuPDF."""
+    if not HAS_PYMUPDF:
+        raise ImportError("PyMuPDF is required for PDF extraction. Install it via 'pip install pymupdf'")
+    
+    text = ""
+    try:
+        with fitz.open(pdf_path) as doc:
+            for page in doc:
+                text += page.get_text()
+   
 
