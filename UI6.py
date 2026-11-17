@@ -93,8 +93,4 @@ except ImportError:
     print("Warning: PyMuPDF not installed. Install with 'pip install pymupdf' to enable PDF handling.")
 
 
-def extract_text_from_pdf(pdf_path: str) -> str:
-    """Extracts text from a single PDF file using PyMuPDF."""
-    if not HAS_PYMUPDF:
-        raise ImportError("PyMuPDF is required for PDF extraction. Install it via 'pip install pymupdf'")
     
