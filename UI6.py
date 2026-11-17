@@ -104,4 +104,23 @@ def extract_text_from_pdf(pdf_path: str) -> str:
             for page in doc:
                 text += page.get_text()
    
-
+def batch_test_pdf_resumes(directory: str = "./test_resumes"):
+    """
+    Tests the parsing pipeline on real PDF resumes in the specified directory.
+    Chain: PDF upload (local path) → text extraction → AI parsing → structured JSON.
+    """
+    if not os.path.exists(directory):
+        print(f"Directory '{directory}' not found.")
+        print("Please download 15 real PDF resumes from Google and place them in a folder named 'test_resumes'.")
+        return
+    
+    pdf_files = glob.glob(os.path.join(directory, "*.pdf"))
+    if not pdf_files:
+        print(f"No PDF files found in '{directory}'.")
+        return
+        
+    print(f"Found {len(pdf_files)} PDF(s). Processing...\n")
+    
+    results = []
+    for pdf_path in pdf_files:
+    
