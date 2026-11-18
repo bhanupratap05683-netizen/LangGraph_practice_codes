@@ -99,3 +99,13 @@ class MatchEvaluation(BaseModel):
     reasons_for_match: List[str] = Field(description="List of reasons why the resume matches the job description")
     reasons_for_mismatch: List[str] = Field(description="List of reasons why the resume does not fully match the job description")
     missing_skills: List[str] = Field(description="List of specific skills mentioned in the job description but missing from the resume")
+    response = await asyncio.to_thread(
+        ollama.chat,
+        model=model_name,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": f"Resume Data:\n{resume_json}\n\nEmpty/Missing Resume Details:\n{empty_details_str}\n\nJob Description:\n{job_description}"},
+        ],
+        format=MatchEvaluation.model_json_schema(),
+        options={"temperature": 0.0, "num_ctx": 4096},
+    )
