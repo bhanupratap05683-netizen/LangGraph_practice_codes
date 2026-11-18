@@ -109,3 +109,12 @@ class MatchEvaluation(BaseModel):
         format=MatchEvaluation.model_json_schema(),
         options={"temperature": 0.0, "num_ctx": 4096},
     )
+        try:
+        with open(OUTPUT_CSV, mode='w', newline='', encoding='utf-8') as f:
+            writer = csv.DictWriter(f, fieldnames=csv_columns)
+            writer.writeheader()
+            writer.writerows(ranked_results)
+        logging.info(f"✅ Successfully exported all {len(ranked_results)} results to '{OUTPUT_CSV}'")
+    except Exception as e:
+        logging.error(f"Failed to write CSV: {e}")
+
