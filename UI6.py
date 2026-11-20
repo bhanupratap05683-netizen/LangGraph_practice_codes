@@ -106,10 +106,3 @@ class MatchEvaluation(BaseModel):
     except Exception as e:
         logging.error(f"Failed to write CSV: {e}")
 
-def extract_email_fallback(text: str) -> str:
-    match = re.search(r"[\w\.-]+@[\w\.-]+\.\w+", text)
-    return match.group(0) if match else ""
-
-
-def extract_phone_fallback(text: str) -> str:
-    # Matches international formats: +91 98765 43210, ()
