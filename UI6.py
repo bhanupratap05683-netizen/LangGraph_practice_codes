@@ -120,6 +120,3 @@ def extract_phone_fallback(text: str) -> str:
         result.email = extract_email_fallback(raw_text)
     if not result.phone:
         result.phone = extract_phone_fallback(raw_text)
-
-    result.last_3_job_titles = result.last_3_job_titles[:3]
-    return result
