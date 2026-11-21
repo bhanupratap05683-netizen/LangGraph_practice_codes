@@ -3,7 +3,7 @@ import re
 from typing import List
 
 import ollama,langchain,langgraph
-
+import os
 
 # --- CONFIGURABLE CONSTANTS ---
 INPUT_FOLDER = "./resumes"          # Folder containing the 50 PDF resumes
