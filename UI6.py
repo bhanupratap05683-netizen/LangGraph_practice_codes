@@ -2,7 +2,7 @@ import json
 import re
 from typing import List
 
-import ollama,
+import ollama,langchain,langgraph
 
 
 # --- CONFIGURABLE CONSTANTS ---
