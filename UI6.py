@@ -106,3 +106,9 @@ class MatchEvaluation(BaseModel):
     if selected_mode != st.session_state.current_mode:
         st.session_state.current_mode = selected_mode
         st.rerun() # Rerun to update the UI title immediately
+
+if prompt := st.chat_input("Apna sawaal yahan likhein..."):
+    # 1. Display user message
+    with st.chat_message("user"):
+        st.markdown(prompt)
+   
