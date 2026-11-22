@@ -112,3 +112,10 @@ if prompt := st.chat_input("Apna sawaal yahan likhein..."):
     with st.chat_message("user"):
         st.markdown(prompt)
    
+for message in st.session_state.messages:
+    if isinstance(message, HumanMessage):
+        with st.chat_message("user"):
+            st.markdown(message.content)
+    elif isinstance(message, AIMessage):
+        with st.chat_message("assistant"):
+            st.markdown(message.content)
