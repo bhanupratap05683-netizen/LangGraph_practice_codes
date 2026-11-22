@@ -102,3 +102,7 @@ class MatchEvaluation(BaseModel):
     except Exception as e:
         logging.error(f"Failed to write CSV: {e}")
 
+# Update mode if changed
+    if selected_mode != st.session_state.current_mode:
+        st.session_state.current_mode = selected_mode
+        st.rerun() # Rerun to update the UI title immediately
