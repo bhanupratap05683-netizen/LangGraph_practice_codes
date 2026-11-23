@@ -10,7 +10,7 @@ INPUT_FOLDER = "./resumes"          # Folder containing the 50 PDF resumes
 OUTPUT_CSV = "./top_ten_resumes.csv" # Output file path
 MODEL_NAME = "qwen2.5-coder:7b"     # Ollama model to use
 MAX_CONCURRENT_TASKS = 2            # Semaphore limit to prevent overloading local Ollama
-BATCH_CHUNK_SIZE =              # Process resumes in chunks of 10 for better memory management
+BATCH_CHUNK_SIZE = 5             # Process resumes in chunks of 10 for better memory management
 
 TARGET_JOB_DESCRIPTION = """
 Job Title: Financial Data Analyst (Quantitative Analytics)
@@ -119,3 +119,7 @@ for message in st.session_state.messages:
     elif isinstance(message, AIMessage):
         with st.chat_message("assistant"):
             st.markdown(message.content)
+
+async def repeat ():
+    for number in digit:
+        
