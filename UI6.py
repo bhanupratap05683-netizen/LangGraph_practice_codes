@@ -4,7 +4,7 @@ from typing import List
 
 import ollama,langchain,langgraph
 import os
-
+import async
 # --- CONFIGURABLE CONSTANTS ---
 INPUT_FOLDER = "./resumes"          # Folder containing the 50 PDF resumes
 OUTPUT_CSV = "./ranked_resumes.csv" # Output file path
