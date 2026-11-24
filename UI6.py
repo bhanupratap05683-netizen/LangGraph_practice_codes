@@ -112,8 +112,4 @@ if prompt := st.chat_input("Apna sawaal yahan likhein..."):
     # 1. Display user message
     with st.chat_message("user"):
         st.markdown(prompt)
-   
 
-async def repeat ():
-    for number in digit:
-        
