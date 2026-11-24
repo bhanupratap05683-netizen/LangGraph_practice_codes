@@ -5,6 +5,7 @@ from typing import List
 import ollama,langchain,langgraph
 import os
 import async
+import genai
 # --- CONFIGURABLE CONSTANTS ---
 INPUT_FOLDER = "./resumes"          # Folder containing the 50 PDF resumes
 OUTPUT_CSV = "./top_ten_resumes.csv" # Output file path
