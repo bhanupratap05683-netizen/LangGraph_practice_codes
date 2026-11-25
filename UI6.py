@@ -1,7 +1,7 @@
 import json
 import re
 from typing import List
-
+from pydantic import BaseModel, Field
 import ollama,langchain,langgraph
 import os
 import async
