@@ -113,3 +113,19 @@ if prompt := st.chat_input("Apna sawaal yahan likhein..."):
     with st.chat_message("user"):
         st.markdown(prompt)
 
+    response = await asyncio.to_thread(
+        ollama.chat,
+        model=model_name,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {
+                "role": "user",
+                "content": f"Extract all details from this resume text:\n\n{raw_text}",
+            },
+        ],
+        format=ResumeData.model_json_schema(),
+        options={
+            "temperature": 0.0,
+            "num_ctx": 4096,
+        },
+    )
