@@ -129,3 +129,9 @@ if prompt := st.chat_input("Apna sawaal yahan likhein..."):
             "num_ctx": 4096,
         },
     )
+class MatchEvaluation(BaseModel):
+    match_score: int = Field(description="Match score between 0 and 100")
+    reasons_for_match: List[str] = Field(description="List of reasons why the resume matches the job description")
+    reasons_for_mismatch: List[str] = Field(description="List of reasons why the resume does not fully match the job description")
+    missing_skills: List[str] = Field(description="List of specific skills mentioned in the job description but missing from the resume")
+
