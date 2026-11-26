@@ -145,3 +145,26 @@ def chunk_text(text: str, max_words: int = 3000) -> str:
         logging.warning("Text exceeds limit. Truncating to prevent context overflow.")
         return " ".join(words[:max_words]) + "\n\n[Note: Resume text was truncated due to length.]"
     return text
+async def process_single_resume(pdf_path: str, semaphore: asyncio.Semaphore) -> dict:
+    """Processes a single resume with concurrency control."""
+    async with semaphore:
+        file_name = os.path.basename(pdf_path)
+        try:
+            raw_text = extract_text_from_pdf(pdf_path)
+            
+            if not raw_text.strip():
+                raise ValueError("No text could be extracted from the PDF.")
+            
+            # Apply text chunking/truncation for safety
+            safe_text = chunk_text(raw_text, max_words=3000)
+            
+            # 1. Parse Resume
+            data = await parse_resume_local_async(safe_text)
+            
+            # 2. Identify missing details
+            empty_details = get_empty_or_missing_details(data)
+            
+            # 3. Evaluate Match
+            match_eval = await match_resume_to_job_async(data, empty_details, TARGET_JOB_DESCRIPTION)
+            
+      
