@@ -135,3 +135,13 @@ class MatchEvaluation(BaseModel):
     reasons_for_mismatch: List[str] = Field(description="List of reasons why the resume does not fully match the job description")
     missing_skills: List[str] = Field(description="List of specific skills mentioned in the job description but missing from the resume")
 
+def chunk_text(text: str, max_words: int = 3000) -> str:
+    """
+    Text Chunking: Truncates text if it exceeds a reasonable word limit.
+    Prevents context window overflow while retaining the most critical info (usually at the top of resumes).
+    """
+    words = text.split()
+    if len(words) > max_words:
+        logging.warning("Text exceeds limit. Truncating to prevent context overflow.")
+        return " ".join(words[:max_words]) + "\n\n[Note: Resume text was truncated due to length.]"
+    return text
