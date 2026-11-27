@@ -195,3 +195,12 @@ async def process_single_resume(pdf_path: str, semaphore: asyncio.Semaphore) -> 
         "- REASONS FOR MISMATCH: Highlight areas where the candidate falls short.\n"
         "- MISSING SKILLS: List specific technical skills, tools, or qualifications explicitly mentioned in the job description but absent."
     )
+try:
+        with open(OUTPUT_CSV, mode='w', newline='', encoding='utf-8') as f:
+            writer = csv.DictWriter(f, fieldnames=csv_columns)
+            writer.writeheader()
+            writer.writerows(ranked_results)
+        logging.info(f"✅ Successfully exported all {len(ranked_results)} results to '{OUTPUT_CSV}'")
+    except Exception as e:
+        logging.error(f"Failed to write CSV: {e}")
+
