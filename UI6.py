@@ -203,12 +203,6 @@ try:
         logging.info(f"✅ Successfully exported all {len(ranked_results)} results to '{OUTPUT_CSV}'")
     except Exception as e:
         logging.error(f"Failed to write CSV: {e}")
-documents = [
-    "def quicksort(arr): return arr if len(arr) <= 1 else quicksort([x for x in arr[1:] if x < arr[0]]) + [arr[0]] + quicksort([x for x in arr[1:] if x >= arr[0]])",
-    "def bubble_sort(arr): ...",
-    "SELECT * FROM users WHERE status = 'active';",
-    "const fetchData = async () => await fetch('/api/data');"
-]
 async def parse_resume_local_async(
     raw_text: str, model_name: str = "qwen2.5-coder:7b"
 ) -> ResumeData:
